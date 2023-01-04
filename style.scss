@@ -1,0 +1,141 @@
+@import "assets/scss/config/fonts";
+@import "assets/scss/config/reset";
+@import "assets/scss/config/vars";
+@import "assets/scss/config/utility";
+@import "assets/scss/modules/typography";
+@import "assets/scss/modules/fields";
+@import "assets/scss/modules/buttons";
+@import "assets/scss/modules/toast";
+@import "assets/scss/config/global";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.app-author {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container {
+  --gap: 15px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--bcs-grey-4);
+  padding: 10px;
+  transition: all 0.3s var(--ease-elastic-1);
+}
+
+.relaxer-app {
+  display: grid;
+  gap: 90px;
+
+  .title {
+    text-align: center;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: calc(20px + (25 - 20) * ((100vw - 300px) / (var(--maximumViewportWidth) - 300)));
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 300px;
+    position: relative;
+    transform: scale(1);
+
+    &.shrink {
+      animation: shrink 3s linear forwards;
+    }
+
+    &.grow {
+      animation: grow 3s linear forwards;
+    }
+  }
+
+  &__circle {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__pointer {
+    position: absolute;
+    top: -40px;
+    left: 140px;
+    width: 20px;
+    height: 190px;
+    animation: rotate 7.5s linear forwards infinite;
+    transform-origin: bottom center;
+  }
+
+  .pointer {
+    background-color: #F78D3F;
+    border: 4px solid;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: block;
+  }
+
+  &__gradient-circle {
+    background: conic-gradient(
+        #393E46 0%,
+        #393E46 40%,
+        #716e77 40%,
+        #716e77 60%,
+        #222831 60%,
+        #222831 100%
+    );
+    height: 320px;
+    width: 320px;
+    z-index: -2;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+  }
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1.2);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
